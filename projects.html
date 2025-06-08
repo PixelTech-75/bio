@@ -147,6 +147,39 @@
       color: #A3FFFE;
       border-bottom: 1px solid #A3FFFE;
     }
+    #audioPopup {
+      position: fixed;
+      z-index: 10000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(20,23,30,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.22s;
+    }
+    #audioPopupInner {
+      padding: 2.2rem 2.7rem;
+      border-radius: 19px;
+      background: rgba(40,44,60,0.96);
+      box-shadow: 0 6px 36px #000a;
+      border: 2.5px solid #292d38;
+      outline: 3px solid #58A6FF77;
+      text-align: center;
+      font-family: 'Press Start 2P', 'Share Tech Mono', monospace, Arial;
+      color: #A3FFFE;
+      font-size: 1.14rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      user-select: none;
+      animation: popupfadein 0.5s;
+      max-width: 90vw;
+    }
+    @keyframes popupfadein {
+      from { opacity: 0; transform: scale(0.95);}
+      to { opacity: 1; transform: scale(1);}
+    }
     @media (max-width:800px){
       .container{ max-width:97vw; padding:1.1rem;}
       h1{ font-size:1.2rem;}
@@ -209,9 +242,37 @@
       <a href="index.html">&larr; Back to Home</a>
     </div>
   </div>
+  <!-- Audio for background music (user must click to play, new theme song) -->
+  <audio id="bgAudio" loop>
+    <source src="https://github.com/PixelTech-75/bio/raw/main/%5BNCS%5D%20-%20PixelTech-75%20Theme%20Song.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+  <!-- Popup for audio start -->
+  <div id="audioPopup">
+    <div id="audioPopupInner">
+      <span>Click anywhere to continue</span>
+    </div>
+  </div>
   <script>
-    // (Optional) Add pixel-mosaic background effect if you want
-    // You can copy the background JS code from your index.html if you want the same effect.
+    // --- AUDIO POPUP LOGIC ---
+    const audio = document.getElementById('bgAudio');
+    const popup = document.getElementById('audioPopup');
+    function startAudioAndHidePopup() {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => { /* ignore errors, most browsers require interaction */ });
+      }
+      popup.style.opacity = '0';
+      setTimeout(() => popup.style.display = 'none', 220);
+      window.removeEventListener('mousedown', startAudioAndHidePopup);
+      window.removeEventListener('touchstart', startAudioAndHidePopup);
+      window.removeEventListener('keydown', startAudioAndHidePopup);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener('mousedown', startAudioAndHidePopup);
+      window.addEventListener('touchstart', startAudioAndHidePopup);
+      window.addEventListener('keydown', startAudioAndHidePopup);
+    });
   </script>
 </body>
 </html>
