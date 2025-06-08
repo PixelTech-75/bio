@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | PixelTech-75</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      color: #ECECEC;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #181A20;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    #pixel-mosaic-bg {
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      display: block;
+      pointer-events: none;
+      background: #181A20;
+      transition: filter 0.4s;
+      will-change: transform;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem 0 1rem 0;
+      background: rgba(30, 34, 44, 0.98);
+      font-family: monospace;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      z-index: 2;
+      position: relative;
+    }
+    .nav a {
+      color: #58A6FF;
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.18s;
+    }
+    .nav a.active, .nav a:hover {
+      background: #23262F;
+      color: #A3FFFE;
+    }
+    .container {
+      background: rgba(35, 38, 47, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      padding: 2.2rem 2.2rem 2rem 2.2rem;
+      max-width: 700px;
+      margin: 2.5rem auto 0 auto;
+      border: 2px solid #292d38;
+      outline: 3px solid #58A6FF33;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-family: 'Press Start 2P', 'Share Tech Mono', monospace, Arial;
+      color: #FF355B;
+      font-size: 2rem;
+      text-align: center;
+      text-shadow: 1px 1px #58A6FF, -1px 1px #00FFD0;
+      margin-bottom: 2rem;
+    }
+    .project-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .project-item {
+      background: #23262f;
+      margin: 1.2rem 0;
+      padding: 1.4rem 1.4rem 1.1rem 1.4rem;
+      border-radius: 11px;
+      font-size: 1.1rem;
+      color: #B6DBF7;
+      border-left: 5px solid #58A6FF77;
+      font-family: monospace;
+      transition: background 0.18s;
+      box-shadow: 0 3px 12px #0002;
+    }
+    .project-item:hover {
+      background: #253045;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      color: #A3FFFE;
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .project-link {
+      color: #58A6FF;
+      text-decoration: none;
+      font-size: 1.1em;
+      vertical-align: middle;
+    }
+    .project-desc {
+      margin-bottom: 0.4em;
+      margin-top: 0.2em;
+    }
+    .project-tags {
+      font-size: 0.95em;
+      color: #7fe8e7;
+      margin-top: 0.4em;
+    }
+    .tag-link {
+      color: #7FE8E7;
+      background: #223;
+      border-radius: 5px;
+      padding: 0 0.5em;
+      margin-right: 0.4em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.13s, color 0.13s;
+      font-size: 0.99em;
+      border: 1px solid #3cd9d6;
+    }
+    .tag-link:hover {
+      color: #181A20;
+      background: #7FE8E7;
+      border: 1px solid #7FE8E7;
+    }
+    .back-link {
+      display: block;
+      margin-top: 2.2rem;
+      text-align: center;
+      font-size: 1em;
+    }
+    .back-link a {
+      color: #58A6FF;
+      text-decoration: none;
+      border-bottom: 1px dashed #58A6FF88;
+    }
+    .back-link a:hover {
+      color: #A3FFFE;
+      border-bottom: 1px solid #A3FFFE;
+    }
+    @media (max-width:800px){
+      .container{ max-width:97vw; padding:1.1rem;}
+      h1{ font-size:1.2rem;}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pixel-mosaic-bg"></canvas>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
+  </nav>
+  <div class="container">
+    <h1>My Projects</h1>
+    <ul class="project-list">
+      <li class="project-item">
+        <div class="project-title">
+          3D Blender Animation
+        </div>
+        <div class="project-desc">
+          Recent animations I made using the 3D modeling software, Blender.
+        </div>
+        <div class="project-tags">
+          Tags:
+          <a href="https://www.blender.org/" class="tag-link" target="_blank" rel="noopener">Blender</a>
+          <a href="https://en.wikipedia.org/wiki/3D_modeling" class="tag-link" target="_blank" rel="noopener">3D Modeling</a>
+          <a href="https://en.wikipedia.org/wiki/Animation" class="tag-link" target="_blank" rel="noopener">Animation</a>
+        </div>
+      </li>
+      <li class="project-item">
+        <div class="project-title">
+          Window Powershell Scripts
+        </div>
+        <div class="project-desc">
+          Txt files that I created and colaborated on that do cool things when you paste them in Windows Powershell.
+        </div>
+        <div class="project-tags">
+          Tags:
+          <a href="https://docs.microsoft.com/powershell/" class="tag-link" target="_blank" rel="noopener">Windows Powershell</a>
+          <a href="https://learn.microsoft.com/dotnet/csharp/" class="tag-link" target="_blank" rel="noopener">C#</a>
+          <a href="https://en.wikipedia.org/wiki/Unix_shell" class="tag-link" target="_blank" rel="noopener">Unix Shells</a>
+        </div>
+      </li>
+      <li class="project-item">
+        <div class="project-title">
+          Photoshop Designs
+        </div>
+        <div class="project-desc">
+          Small and complex images that were photoshopped by me.
+        </div>
+        <div class="project-tags">
+          Tags:
+          <a href="https://www.canva.com/" class="tag-link" target="_blank" rel="noopener">Canva</a>
+          <a href="https://www.adobe.com/products/photoshop.html" class="tag-link" target="_blank" rel="noopener">Photoshop</a>
+          <a href="https://en.wikipedia.org/wiki/Design" class="tag-link" target="_blank" rel="noopener">Designing</a>
+        </div>
+      </li>
+    </ul>
+    <div class="back-link">
+      <a href="index.html">&larr; Back to Home</a>
+    </div>
+  </div>
+  <script>
+    // (Optional) Add pixel-mosaic background effect if you want
+    // You can copy the background JS code from your index.html if you want the same effect.
+  </script>
+</body>
+</html>
